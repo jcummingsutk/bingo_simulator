@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "package_placeholder"
+name = "bingo_simulator"
 version = "0.0.1"
 description = ""
 authors = ["John Cummings <jcummingsutk@gmail.com>"]
