@@ -13,6 +13,6 @@ def generate_bingo_card(
 ) -> BingoCard:
     values = []
     for row in range(nrows):
-        row = [random_number_generator.generate() for _ in ncols]
+        row = [random_number_generator.generate() for _ in range(ncols)]
         values.append(row)
     return BingoCard(values)

@@ -1,6 +1,6 @@
 import pytest
 
-from bingo_simulator.board import BingoCard
+from bingo_simulator.bingo_card.bingo_card import BingoCard
 
 
 def test_illegal_board():
