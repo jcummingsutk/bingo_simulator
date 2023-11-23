@@ -20,3 +20,10 @@ def test_board_generator():
     ]
     bingo_card = generate_bingo_card(3, 3, number_generator)
     assert expected_card_values == bingo_card.values
+
+
+def test_nrows_cols():
+    board = [[1, 2, 3, 4], [2, 3, 4, 5]]
+    card = BingoCard(board, each_value_unique=False)
+    assert card.nrows == 2
+    assert card.ncols == 4
