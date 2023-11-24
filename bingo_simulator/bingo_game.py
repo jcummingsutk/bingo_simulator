@@ -37,4 +37,12 @@ number {col} is out of bounds of the total number of valid columns {0, max_col_i
                 )
 
     def check_winner(self) -> bool:
-        raise NotImplementedError
+        bingo_card_values = self.bingo_card.values
+        values_in_pattern = [
+            bingo_card_values[coordinate[0]][coordinate[1]]
+            for coordinate in self.bingo_pattern
+        ]
+        for value in values_in_pattern:
+            if value not in values_in_pattern:
+                return False
+        return True
