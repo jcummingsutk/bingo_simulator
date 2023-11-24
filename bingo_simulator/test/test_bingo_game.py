@@ -61,10 +61,10 @@ def test_losers():
     bingo_card_values = [[1, 2, 5], [4, 8, 6]]
     bingo_card = BingoCard(values=bingo_card_values)
     bingo_pattern = [(0, 0), (0, 1)]
-    drawn_values = [1, 2]
+    drawn_values = [1, 3]
     bingo_game = BingoGame(
         bingo_card=bingo_card,
         bingo_pattern=bingo_pattern,
         drawn_values=drawn_values,
     )
-    assert bingo_game.check_winner() is True
+    assert bingo_game.check_winner() is False

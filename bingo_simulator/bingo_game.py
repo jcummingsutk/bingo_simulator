@@ -43,6 +43,6 @@ number {col} is out of bounds of the total number of valid columns {0, max_col_i
             for coordinate in self.bingo_pattern
         ]
         for value in values_in_pattern:
-            if value not in values_in_pattern:
+            if value not in self.drawn_values:
                 return False
         return True
