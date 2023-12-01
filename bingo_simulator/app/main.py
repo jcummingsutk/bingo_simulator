@@ -9,7 +9,7 @@ app = FastAPI()
 handler = Mangum(app)
 
 
-@app.get("/")
+@app.get("/test")
 async def test():
     return {"test": "data_new_updating_with_ci"}
 
