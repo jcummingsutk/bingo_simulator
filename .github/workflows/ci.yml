@@ -63,3 +63,11 @@ jobs:
           docker build -t bingo-simulator:latest .
           docker tag bingo-simulator:latest $ECR_REGISTRY/$ECR_REPOSITORY$IMAGE_NAME:latest
           docker push $ECR_REGISTRY/$ECR_REPOSITORY$IMAGE_NAME:latest
+      - name: Update lambda function with most current image
+        env: 
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
+          IMAGE_NAME: bingo-simulator
+        run: |
+          aws lambda update-function-code --function-name bingo-simulator --image-uri $ECR_REGISTRY/$ECR_REPOSITORY$IMAGE_NAME:latest
+        
