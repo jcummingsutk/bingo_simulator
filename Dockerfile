@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.9 AS compile-image
 
 RUN pip install poetry==1.4.2
 
@@ -15,4 +15,12 @@ RUN poetry install
 
 COPY bingo_simulator/ ./bingo_simulator/
 
-CMD ["poetry", "run", "uvicorn", "bingo_simulator.app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+RUN poetry build
+
+FROM public.ecr.aws/lambda/python:3.9
+
+COPY --from=compile-image /app/dist/ ${LAMBDA_TASK_ROOT}/dist
+
+RUN pip install --find-links ${LAMBDA_TASK_ROOT}/dist bingo_simulator
+
+CMD ["bingo_simulator.app.main.handler"]
