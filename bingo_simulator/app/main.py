@@ -1,12 +1,20 @@
+import uvicorn
 from fastapi import FastAPI
+from mangum import Mangum
 
 from bingo_simulator.bingo_card.bingo_card import BingoCard
 from bingo_simulator.bingo_game import BingoGame
 
 app = FastAPI()
+handler = Mangum(app)
 
 
-@app.get("/check_game/")
+@app.get("/")
+async def test():
+    return {"test": "data"}
+
+
+@app.post("/check_game")
 async def check_game(
     card: BingoCard, pattern: list[tuple[int, int]], drawn_values: list[int]
 ):
@@ -14,3 +22,7 @@ async def check_game(
     if game.check_winner():
         return {"game_won": True}
     return {"game_won": False}
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=9000)
