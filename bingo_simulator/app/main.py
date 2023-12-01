@@ -11,7 +11,7 @@ handler = Mangum(app)
 
 @app.get("/")
 async def test():
-    return {"test": "data_new"}
+    return {"test": "data_new_updating_with_ci"}
 
 
 @app.post("/check_game")
