@@ -41,5 +41,5 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
         run: |
           docker build -t bingo-simulator:latest .
-          docker tag bingo-simulator:latest $ECR_REGISTRY/bingo-simulator:latest
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker tag bingo-simulator:latest $ECR_REGISTRY/$ECR_REPOSITORY/bingo_simulator:latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY/bingo_simulator:latest
