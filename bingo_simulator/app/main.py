@@ -8,7 +8,7 @@ from bingo_simulator.bingo_card.bingo_card_generator import generate_bingo_card
 from bingo_simulator.bingo_game import BingoGame
 from bingo_simulator.random_number_generator import SampleWithoutReplacement
 
-app = FastAPI(root_path="/beta/")
+app = FastAPI()
 
 handler = Mangum(app)
 
