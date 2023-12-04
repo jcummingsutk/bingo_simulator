@@ -10,13 +10,25 @@ class BingoCard:
     each_value_unique: bool = True
 
     def __post_init__(self):
+        """Checks to make sure that the card is rectangular, each row having
+        the same length, and that values are not repeated in the bingo card
+
+        Raises:
+            ValueError: raised if not rectangular
+        """
         num_cols = self.ncols
         for row in self.values:
             if len(row) != num_cols:
                 raise ValueError("Each row should have the same length")
-        self.check_unique_values()
+        if self.each_value_unique:
+            self.check_unique_values()
 
     def check_unique_values(self):
+        """Ensures that each value in the card is unique
+
+        Raises:
+            ValueError: raised if there are duplicate values in the card
+        """
         if not self.each_value_unique:
             return
         flat_values = [item for sublist in self.values for item in sublist]

@@ -37,6 +37,17 @@ number {col} is out of bounds of the total number of valid columns {0, max_col_i
                 )
 
     def check_winner(self) -> bool:
+        """Checks to see if the bingo game is a winner by seeing if all the
+        values in the pattern are in the drawn values.
+
+        Example: If the card is [[1, 2, 3, 4], [5, 6, 7, 8]], and the pattern is the
+        is leftmost values in the first row [(0, 0), (0, 1)], and the drawn values
+        are [1, 2, 3], then the game is won. if the drawn values were [1, 3], then
+        the game would not be won
+
+        Returns:
+            bool: whether or not the game is a winner
+        """
         bingo_card_values = self.bingo_card.values
         values_in_pattern = [
             bingo_card_values[coordinate[0]][coordinate[1]]
