@@ -11,9 +11,9 @@ WORKDIR /app
 
 COPY pyproject.toml poetry.lock README.md ./
 
-RUN poetry install
-
 COPY bingo_simulator/ ./bingo_simulator/
+
+RUN poetry install
 
 RUN poetry build
 
