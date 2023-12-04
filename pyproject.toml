@@ -4,6 +4,7 @@ version = "0.0.1"
 description = ""
 authors = ["John Cummings <jcummingsutk@gmail.com>"]
 readme = "README.md"
+packages = [{ include = "bingo_simulator" }]
 
 [tool.poetry.dependencies]
 python = ">=3.9, <3.12"
