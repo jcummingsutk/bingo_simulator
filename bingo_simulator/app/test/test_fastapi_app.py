@@ -4,7 +4,6 @@ from fastapi.testclient import TestClient
 
 from bingo_simulator.app.main import app
 from bingo_simulator.bingo_card import BingoCard
-from bingo_simulator.bingo_game import BingoGame
 
 client = TestClient(app)
 
