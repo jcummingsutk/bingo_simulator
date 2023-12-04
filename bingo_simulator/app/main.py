@@ -6,6 +6,7 @@ from mangum import Mangum
 from bingo_simulator.bingo_card.bingo_card import BingoCard
 from bingo_simulator.bingo_card.bingo_card_generator import generate_bingo_card
 from bingo_simulator.bingo_game import BingoGame
+from bingo_simulator.bingo_patterns import StandardBingoPatternName, create_pattern
 from bingo_simulator.random_number_generator import SampleWithoutReplacement
 
 app = FastAPI()
@@ -31,6 +32,14 @@ async def get_bingo_card(
     )
 
     return bingo_card
+
+
+@app.post("/bingo_pattern")
+async def get_bingo_pattern(
+    bingo_card: BingoCard, pattern_type: StandardBingoPatternName
+):
+    pattern = create_pattern(bingo_card, pattern_type)
+    return pattern
 
 
 @app.post("/check_game")
