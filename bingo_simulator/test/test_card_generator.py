@@ -10,6 +10,9 @@ class IncrementingNumberGeneratorTest:
         self.value = self.value + 1
         return return_value
 
+    def reset(self):
+        pass
+
 
 def test_card_generator():
     number_generator = IncrementingNumberGeneratorTest(3)

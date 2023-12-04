@@ -12,13 +12,21 @@ class SampleWithoutReplacement:
             sample_list (list[int]): the list of numbers that should be drawn from
         """
         self.sample_list = sample_list
+        self.idx = 0
         random.shuffle(self.sample_list)
 
     def generate(self) -> int:
-        """Returns the first item of the shuffled list to simulate a random number
-        bing drawn
+        """Returns the ith item of the shuffled list to simulate sampling without
+        replacement
 
         Returns:
-            int: number from the list
+            int: random number
         """
-        return self.sample_list.pop(0)
+        return_val = self.sample_list[self.idx]
+        self.idx = self.idx + 1
+        return return_val
+
+    def reset(self):
+        """Shuffles up the list and resets the index to 0."""
+        self.idx = 0
+        random.shuffle(self.sample_list)
