@@ -38,14 +38,17 @@ async def get_bingo_card(
     return bingo_card
 
 
-@app.post("/bingo_pattern")
+@app.post("/bingo_pattern/{pattern_type}")
 async def get_bingo_pattern(
     bingo_card: BingoCard, pattern_type: StandardBingoPatternName
 ):
-    if pattern_type.value is StandardBingoPatternName.POSTAGE_STAMP:
-        return create_corners_pattern(bingo_card=bingo_card)
-    elif pattern_type.value is StandardBingoPatternName.CORNERS:
-        return create_postage_pattern(bingo_card=bingo_card)
+    if pattern_type is StandardBingoPatternName.POSTAGE_STAMP:
+        pattern = create_postage_pattern(bingo_card=bingo_card)
+        return {"pattern": pattern}
+    elif pattern_type is StandardBingoPatternName.CORNERS:
+        pattern = create_corners_pattern(bingo_card=bingo_card)
+        return {"pattern": pattern}
+    raise ValueError("Undefined pattern")
 
 
 @app.post("/check_game")
