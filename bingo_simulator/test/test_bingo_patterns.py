@@ -2,7 +2,7 @@ import unittest
 
 import pytest
 
-from bingo_simulator.bingo_card.bingo_card import BingoCard
+from bingo_simulator.bingo_card import BingoCard
 from bingo_simulator.bingo_patterns import (
     create_corners_pattern,
     create_postage_pattern,

@@ -1,4 +1,4 @@
-from bingo_simulator.bingo_card.bingo_card_generator import generate_bingo_card
+from bingo_simulator.bingo_card_generator import generate_bingo_card
 
 
 class IncrementingNumberGeneratorTest:

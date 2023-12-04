@@ -3,10 +3,14 @@ import uvicorn
 from fastapi import FastAPI
 from mangum import Mangum
 
-from bingo_simulator.bingo_card.bingo_card import BingoCard
-from bingo_simulator.bingo_card.bingo_card_generator import generate_bingo_card
+from bingo_simulator.bingo_card import BingoCard
+from bingo_simulator.bingo_card_generator import generate_bingo_card
 from bingo_simulator.bingo_game import BingoGame
-from bingo_simulator.bingo_patterns import StandardBingoPatternName, create_pattern
+from bingo_simulator.bingo_patterns import (
+    StandardBingoPatternName,
+    create_corners_pattern,
+    create_postage_pattern,
+)
 from bingo_simulator.random_number_generator import SampleWithoutReplacement
 
 app = FastAPI()
@@ -38,8 +42,10 @@ async def get_bingo_card(
 async def get_bingo_pattern(
     bingo_card: BingoCard, pattern_type: StandardBingoPatternName
 ):
-    pattern = create_pattern(bingo_card, pattern_type)
-    return pattern
+    if pattern_type.value is StandardBingoPatternName.POSTAGE_STAMP:
+        return create_corners_pattern(bingo_card=bingo_card)
+    elif pattern_type.value is StandardBingoPatternName.CORNERS:
+        return create_postage_pattern(bingo_card=bingo_card)
 
 
 @app.post("/check_game")

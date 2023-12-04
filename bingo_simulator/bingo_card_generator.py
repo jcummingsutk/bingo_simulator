@@ -1,6 +1,6 @@
 from typing import Protocol
 
-from bingo_simulator.bingo_card.bingo_card import BingoCard
+from bingo_simulator.bingo_card import BingoCard
 
 
 class RandomNumberGenerator(Protocol):

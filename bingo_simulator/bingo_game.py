@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from bingo_simulator.bingo_card.bingo_card import BingoCard
+from bingo_simulator.bingo_card import BingoCard
 
 
 @dataclass

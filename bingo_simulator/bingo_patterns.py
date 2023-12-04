@@ -1,6 +1,6 @@
 from enum import Enum
 
-from bingo_simulator.bingo_card.bingo_card import BingoCard
+from bingo_simulator.bingo_card import BingoCard
 
 
 class StandardBingoPatternName(str, Enum):
